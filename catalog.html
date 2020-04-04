@@ -5,7 +5,21 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-  
+    
+  .grid{
+    background-color:mauvish;
+    dispaly:grid;
+    padding:20px;
+    grid-column-gap:0px;
+    grid-template-columns:100px 100px auto;
+    }
+    
+  .grid.item{
+    background-color:white;
+    font-size:10px;
+    text-align:centre;
+    }
+    
   .container{
   display:flex;
   flex-wrap:wrap;
@@ -33,6 +47,12 @@
   
   <body>
   <h1></h1>
+    
+  <div class="grid">
+    <div class="grid-item">blabla</div>
+    <div class="grid-item">blabla</div>
+    <div class="grid-item"></div>
+  </div>
   <div class="container">
   <a href="#">A. Analyse des remises sur quantités des fournisseurs</a>
   <a href="#">B. world class engineering : Design of Experiments</a>
