@@ -1,0 +1,84 @@
+Open sidebar
+Create Webpage to Extract Text from Image
+
+
+Ismail Aichouni
+Creat a webpage that allow the user to take a picture , after an AI machine learning js script transform the text from the picture to text in a table and store it 
+<html>
+  <head>
+    <title>Text Extraction from Image</title>
+  </head>
+  <body>
+    <h1>Text Extraction from Image</h1>
+
+    <!-- This is the form that allows the user to select an image file -->
+    <form id="image-form">
+      <label for="image-file">Select an image file:</label><br>
+      <input type="file" id="image-file" accept="image/*"><br>
+      <button type="submit">Extract Text</button>
+    </form>
+
+    <!-- This is the table that will display the extracted text -->
+    <table id="text-table">
+      <tr>
+        <th>Line Number</th>
+        <th>Text</th>
+      </tr>
+    </table>
+
+    <!-- This is the JavaScript that handles the image processing and text extraction -->
+    <script>
+      // Get references to the form and table elements
+      const imageForm = document.getElementById('image-form');
+      const textTable = document.getElementById('text-table');
+
+      // Add a submit event listener to the form
+      imageForm.addEventListener('submit', event => {
+        // Prevent the form from being submitted
+        event.preventDefault();
+
+        // Get the selected image file
+        const imageFile = document.getElementById('image-file').files[0];
+
+        // Ensure that an image file was selected
+        if (!imageFile) {
+          alert('No image file selected');
+          return;
+        }
+
+        // Use the machine learning script to extract text from the image
+        extractTextFromImage(imageFile).then(textLines => {
+          // Clear the table of any existing rows
+          while (textTable.rows.length > 1) {
+            textTable.deleteRow(1);
+          }
+
+          // Add a new row to the table for each line of text
+          for (let i = 0; i < textLines.length; i++) {
+            const row = textTable.insertRow(-1);
+            const lineNumberCell = row.insertCell(-1);
+            const textCell = row.insertCell(-1);
+            lineNumberCell.innerText = i + 1;
+            textCell.innerText = textLines[i];
+          }
+        });
+      });
+
+      // This is a placeholder function that simulates the text extraction process
+      function extractTextFromImage(imageFile) {
+        return new Promise((resolve, reject) => {
+          // Simulate a delay to demonstrate the asynchronous nature of the function
+          setTimeout(() => {
+            // Generate some fake text lines to return
+            const textLines = [
+              'This is the first line of text',
+              'This is the second line of text',
+              'This is the third line of text'
+            ];
+            resolve(textLines);
+          }, 1000);
+        });
+      }
+    </script>
+  </body>
+</html>
