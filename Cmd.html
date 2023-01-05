@@ -1,70 +1,82 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <title>Ismail Helali</title>
+    <title>OCR Example</title>
   </head>
   <body>
-    <h1>Text Extraction from Image</h1>
-
-    <!-- This is the form that allows the user to select an image file -->
-    <form id="image-form">
-      <label for="image-file">Select an image file:</label><br>
-      <input type="file" id="image-file"><br>
-      <button type="submit">Extract Text</button>
-    </form>
-
-    <!-- This is the div that will display the feedback messages -->
-    <div id="feedback-div"></div>
-
-    <!-- This is the div that will display the extracted text -->
-    <div id="text-div"></div>
-
-    <!-- Load the Tesseract.js library -->
-    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@v3.0.2"></script>
-
-    <!-- This is the JavaScript that handles the image processing and text extraction -->
+    <h1>OCR Example</h1>
+    <div>
+      <img id="image" src="" alt="Captured Image">
+    </div>
+    <div id="text">
+    </div>
+    <div>
+      <progress id="progress-bar" value="0" max="100"></progress>
+    </div>
     <script>
-      // Get references to the form and div elements
-      const imageForm = document.getElementById('image-form');
-      const feedbackDiv = document.getElementById('feedback-div');
-      const textDiv = document.getElementById('text-div');
+      // import the necessary libraries
+      import pytesseract
+      from PIL import Image
 
-      // Add a submit event listener to the form
-      imageForm.addEventListener('submit', event => {
-        // Prevent the form from being submitted
-        event.preventDefault();
+      // preprocess the image (optional)
+      function preprocess_image(image) {
+        // adjust the contrast and brightness
+        image = image.point(p => p * 1.5);
+        image = image.convert('L');
+        
+        // remove noise and blur
+        image = image.filter(ImageFilter.MedianFilter());
+        
+        // correct the perspective
+        image = image.transform(image.size, Image.PERSPECTIVE, data);
+        
+        return image;
+      }
 
-        // Get the selected image file
-        const imageFile = document.getElementById('image-file').files[0];
+      // recognize and extract text from the image
+      function extract_text(image) {
+        // recognize the text using Tesseract
+        text = pytesseract.image_to_string(image);
+        
+        // split the text into rows
+        rows = text.split('\n');
+        
+        return rows;
+      }
 
-        // Ensure that an image file was selected
-        if (!imageFile) {
-          feedbackDiv.innerText = 'No image file selected';
-          return;
+      // update the progress bar with the percentage of completion
+      function update_progress(percentage) {
+        progress_bar = document.getElementById('progress-bar');
+        progress_bar.value = percentage;
+      }
+
+      // main function
+      function main() {
+        // load the image
+        image = Image.open('image.jpg');
+        
+        // preprocess the image (optional)
+        image = preprocess_image(image);
+        
+        // display the image on the webpage
+        image_element = document.getElementById('image');
+        image_element.src = 'data:image/jpeg;base64,' + btoa(image);
+        
+        // recognize and extract the text from the image
+        rows = extract_text(image);
+        
+        // display the extracted text on the webpage
+        text_element = document.getElementById('text');
+        text_element.innerHTML = '';
+        for (row in rows) {
+          text_element.innerHTML += '<pre>' + row + '</pre>';
         }
+        
+        // update the progress bar with the percentage of completion
+        update_progress(100);
+      }
 
-        // Set the text of the feedback div to "Extracting text..."
-        feedbackDiv.innerText = 'Extracting text...';
-
-        // Use Tesseract.js to extract text from the image
-        Tesseract.recognize(imageFile, {
-          // Set the language of the text to be recognized
-          lang: 'eng+fra+ara',
-          // Set Tesseract.js to use the Tesseract OCR engine, which is more accurate but slower than the LSTM engine
-          engine: Tesseract.OcrEngine.TESSERACT_OCR
-        })
-          .then(result => {
-            // Set the text of the feedback div to "Text extracted successfully"
-            feedbackDiv.innerText = 'Text extracted successfully';
-            // Set the text of the text div to the extracted text
-            textDiv.innerText = result.text;
-          })
-          .catch(error => {
-            console.error(error);
-            // Set the text of the feedback div to "There was an error extracting text from the image"
-            feedbackDiv.innerText = 'There was an error extracting text from the image';
-          });
-      });
+      // run the main function
+      main();
     </script>
   </body>
 </html>
