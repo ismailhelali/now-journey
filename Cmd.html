@@ -2,60 +2,82 @@
 <html>
   <head>
     <title>OCR Text Extractor</title>
-    <link rel="stylesheet">
+    
+<style>
+  body {
+    font-family: sans-serif;
+  }
+  input[type=file] {
+    display: block;
+    margin: 20px 0;
+  }
+  button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
+  #status {
+    margin: 20px 0;
+  }
+  #progress-bar-container {
+    width: 100%;
+    height: 20px;
+    background-color: #ddd;
+  }
+  #progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #4CAF50;
+  }
+  #output {
+    margin: 20px 0;
+    font-size: 18px;
+  }
+</style>
+
+  
   </head>
   <body>
     <h1>OCR Text Extractor</h1>
     <p>Select an image from your device to extract text from it:</p>
     <input type="file" id="input-image" accept="image/*">
     <button onclick="extractText()">Extract Text</button>
+    <p id="status">Extracting text...</p>
+    <div id="progress-bar-container">
+      <div id="progress-bar"></div>
+    </div>
     <p id="output"></p>
-    <script src="script.js"></script>
-  </body>
-</html>
-<script>
-Copy code
-function extractText() {
+    <script>
+    
+      function extractText() {
   // Get the input image
   const inputImage = document.getElementById('input-image').files[0];
 
+  // Get references to the status and progress bar elements
+  const status = document.getElementById('status');
+  const progressBar = document.getElementById('progress-bar');
+
   // Perform OCR on the input image
   Tesseract.recognize(inputImage)
+    .progress(function(event) {
+      // Update the width of the progress bar
+      progressBar.style.width = (event.data.progress * 100) + '%';
+    })
     .then(function(result) {
+      // Update the status text
+      status.textContent = 'Text extracted successfully!';
+
       // Display the extracted text on the page
       document.getElementById('output').innerHTML = result.text;
     });
 }
-  
-</script>
-<style>
-  
-
-body {
-  font-family: sans-serif;
-}
-
-input[type=file] {
-  display: block;
-  margin: 20px 0;
-}
-
-button {
-  padding: 10px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-#output {
-  margin: 20px 0;
-  font-size: 18px;
-}
-  
-</style>
+    
+    </script>
+  </body>
+</html>
