@@ -20,36 +20,49 @@
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@v3.0.2"></script>
 
     <!-- This is the JavaScript that handles the image processing and text extraction -->
-    <script>
-      // Get references to the form and div elements
-      const imageForm = document.getElementById('image-form');
-      const textDiv = document.getElementById('text-div');
+  <script>
+  // Get references to the form and div elements
+  const imageForm = document.getElementById('image-file');
+  const textDiv = document.getElementById('text-div');
+  const feedbackDiv = document.getElementById('feedback-div');
 
-      // Add a submit event listener to the form
-      imageForm.addEventListener('submit', event => {
-        // Prevent the form from being submitted
-        event.preventDefault();
+  // Add a submit event listener to the form
+  imageForm.addEventListener('submit', event => {
+    // Prevent the form from being submitted
+    event.preventDefault();
 
-        // Get the selected image file
-        const imageFile = document.getElementById('image-file').files[0];
+    // Get the selected image file
+    const imageFile = document.getElementById('image-file').files[0];
 
-        // Ensure that an image file was selected
-        if (!imageFile) {
-          alert('No image file selected');
-          return;
-        }
+    // Ensure that an image file was selected
+    if (!imageFile) {
+      alert('No image file selected');
+      return;
+    }
 
-        // Use Tesseract.js to extract text from the image
-        Tesseract.recognize(imageFile)
-          .then(result => {
-            // Set the text of the div to the extracted text
-            textDiv.innerText = result.text;
-          })
-          .catch(error => {
-            console.error(error);
-            alert('There was an error extracting text from the image');
-          });
+    // Set the text of the feedback div to "Extracting text..."
+    feedbackDiv.innerText = 'Extracting text...';
+
+    // Use Tesseract.js to extract text from the image
+    Tesseract.recognize(imageFile, {
+      // Set the language of the text to be recognized
+      lang: 'eng',
+      // Set Tesseract.js to use the Tesseract OCR engine, which is more accurate but slower than the LSTM engine
+      engine: Tesseract.OcrEngine.TESSERACT_OCR
+    })
+      .then(result => {
+        // Set the text of the feedback div to "Text extracted successfully"
+        feedbackDiv.innerText = 'Text extracted successfully';
+        // Set the text of the text div to the extracted text
+        textDiv.innerText = result.text;
+      })
+      .catch(error => {
+        console.error(error);
+        // Set the text of the feedback div to "There was an error extracting text from the image"
+        feedbackDiv.innerText = 'There was an error extracting text from the image';
       });
-    </script>
+  });
+</script>
+
   </body>
 </html>
