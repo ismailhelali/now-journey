@@ -94,6 +94,21 @@
   clear: both;
 }
 
+/* Responsive layout */ 
+@media screen and (max-width:750px) {
+ .container a {
+    width: 100%;
+ }
+ }
+    
+ /* Responsive layout  */
+@media screen and (max-width:750px) {
+.food-card img {
+  width: 95%;
+ }
+ }      
+    
+    
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width:600px) {
  .container a {
@@ -269,6 +284,10 @@
   </body>
 </html>
   <script>
+// food card with the some height 
+  
+window.addEventListener("load", function() { 
+
   var foodCards = document.querySelectorAll('.food-card');
 var maxHeight = 0;
 
@@ -282,4 +301,5 @@ foodCards.forEach(function(card) {
   card.style.height = maxHeight + 'px';
 });
 
+});  
     </script>
