@@ -7,88 +7,61 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    .stats-section {
-  display: none;
-}
-
-.stat {
+    .key-indicator {
   display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.number {
-  font-size: 32px;
+.indicator {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.value {
+  font-size: 24px;
   font-weight: bold;
-  animation: countUp 1s;
 }
 
-@keyframes countUp {
-  from {
-    opacity: 0;
+@keyframes pulse {
+  0% {
+    transform: scale(1);
   }
-  to {
-    opacity: 1;
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
   }
 }
+
   </style>
   
   <body>
 
-<div class="stats-section">
-  <div class="stat" id="food-references">
-    <h2>Nombre de Référence Produits Alimentaires</h2>
-    <p class="number" id="food-references-number">0</p>
+<div class="key-indicator">
+  <div class="indicator livraisons-par-jour">
+    <div class="title">Livraisons par jour</div>
+    <div class="value">+30</div>
   </div>
-  <div class="stat" id="packaging-references">
-    <h2>Nombre de Référence Produits d'Emballage</h2>
-    <p class="number" id="packaging-references-number">0</p>
+  <div class="indicator reference-produits">
+    <div class="title">Reference Produits</div>
+    <div class="value">+3000</div>
   </div>
-  <div class="stat" id="cleaning-references">
-    <h2>Nombre de Référence produits d'entretien</h2>
-    <p class="number" id="cleaning-references-number">0</p>
+  <div class="indicator partenaires">
+    <div class="title">Partenaires</div>
+    <div class="value">+200</div>
   </div>
-  <div class="stat" id="customers">
-    <h2>Nombre des Clients</h2>
-    <p class="number" id="customers-number">0</p>
-  </div>
-  <div class="stat" id="daily-deliveries">
-    <h2>Nombre de Livraisons par jour</h2>
-    <p class="number" id="daily-deliveries-number">0</p>
+  <div class="indicator clients-satisfait">
+    <div class="title">Clients Satisfait</div>
+    <div class="value">+300</div>
   </div>
 </div>
+
  </body>
 </html>
-<script>
-  $(document).ready(function() {
-    var statsSection = $('.stats-section');
-    $(window).on('scroll', function() {
-      if(statsSection.isInViewport()) {
-        statsSection.show();
-        animateNumbers();
-      }
-    });
-  });
-  function animateNumbers() {
-    var foodReferences = $('#food-references-number');
-    var packagingReferences = $('#packaging-references-number');
-    var cleaningReferences = $('#cleaning-references-number');
-    var customers = $('#customers-number');
-    var dailyDeliveries = $('#daily-deliveries-number');
-
-    //set the value to the number you want to display
-    foodReferences.text(100);
-    packagingReferences.text(200);
-    cleaningReferences.text(150);
-    customers.text(500);
-    dailyDeliveries.text(25);
-  }
-  //function to check if the element is in the viewport
-  $.fn.isInViewport = function() {
-    var elementTop = $(this).offset().top;
-    var elementBottom = elementTop + $(this).outerHeight();
-    var viewportTop = $(window).scrollTop();
-    var viewportBottom = viewportTop + $(window).height();
-    return elementBottom > viewportTop && elementTop < viewportBottom;
-  };
-</script>
