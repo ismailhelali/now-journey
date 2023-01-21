@@ -38,16 +38,16 @@
 <div class="key-indicator">
   <div class="key-indicator">
   <div class="indicator livraisons-par-jour">
-    <div class="title">Livraisons par jour</div>
-    <div class="value" data-final-value=30">1</div>
+    <div class="title">Livraisons par mois</div>
+    <div class="value" data-final-value="780">1</div>
   </div>
   <div class="indicator reference-produits">
     <div class="title">Reference Produits</div>
-    <div class="value" data-final-value="3000">1</div>
+    <div class="value" data-final-value="3500">1</div>
   </div>
   <div class="indicator partenaires">
     <div class="title">Partenaires</div>
-    <div class="value" data-final-value="200">1</div>
+    <div class="value" data-final-value="240">1</div>
   </div>
   <div class="indicator clients-satisfait">
     <div class="title">Clients Satisfait</div>
@@ -71,7 +71,7 @@ indicators.forEach(indicator => {
       indicator.innerHTML = currentValue;
       currentValue++;
     }
-  }, 0.1);
+  }, 0.01);
 });
 
 </script>
