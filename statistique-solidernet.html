@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    .key-indicator {
+.key-indicator {
   display: flex;
 }
 
@@ -15,7 +15,6 @@
   flex: 1;
   text-align: center;
   padding: 20px;
-  animation: pulse 2s ease-in-out infinite;
 }
 
 .title {
@@ -28,40 +27,48 @@
   font-weight: bold;
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
 
   </style>
   
   <body>
 
 <div class="key-indicator">
+  <div class="key-indicator">
   <div class="indicator livraisons-par-jour">
     <div class="title">Livraisons par jour</div>
-    <div class="value">+30</div>
+    <div class="value" data-final-value="30">1</div>
   </div>
   <div class="indicator reference-produits">
     <div class="title">Reference Produits</div>
-    <div class="value">+3000</div>
+    <div class="value" data-final-value="3000">1</div>
   </div>
   <div class="indicator partenaires">
     <div class="title">Partenaires</div>
-    <div class="value">+200</div>
+    <div class="value" data-final-value="200">1</div>
   </div>
   <div class="indicator clients-satisfait">
     <div class="title">Clients Satisfait</div>
-    <div class="value">+300</div>
+    <div class="value" data-final-value="300">1</div>
   </div>
 </div>
 
+
  </body>
 </html>
+
+<script>
+const indicators = document.querySelectorAll('.indicator .value');
+
+indicators.forEach(indicator => {
+  const finalValue = indicator.dataset.finalValue;
+  let currentValue = 1;
+
+  setInterval(() => {
+    if (currentValue <= finalValue) {
+      indicator.innerHTML = currentValue;
+      currentValue++;
+    }
+  }, 50);
+});
+
+</script>
