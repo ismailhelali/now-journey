@@ -1,0 +1,88 @@
+<!DATATYPE html>
+<html>
+  <head>
+  <title>Gamme Solidernet</title>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .stats-section {
+  display: none;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.number {
+  font-size: 32px;
+  font-weight: bold;
+  animation: countUp 1s;
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+  </style>
+  
+  <body>
+
+<div class="stats-section">
+  <div class="stat" id="food-references">
+    <h2>Nombre de Référence Produits Alimentaires</h2>
+    <p class="number" id="food-references-number">0</p>
+  </div>
+  <div class="stat" id="packaging-references">
+    <h2>Nombre de Référence Produits d'Emballage</h2>
+    <p class="number" id="packaging-references-number">0</p>
+  </div>
+  <div class="stat" id="cleaning-references">
+    <h2>Nombre de Référence produits d'entretien</h2>
+    <p class="number" id="cleaning-references-number">0</p>
+  </div>
+  <div class="stat" id="customers">
+    <h2>Nombre des Clients</h2>
+    <p class="number" id="customers-number">0</p>
+  </div>
+  <div class="stat" id="daily-deliveries">
+    <h2>Nombre de Livraisons par jour</h2>
+    <p class="number" id="daily-deliveries-number">0</p>
+  </div>
+</div>
+ </body>
+</html>
+<script>
+//when the user scroll down to this section, the stats will be displayed and animated
+var statsSection = document.querySelector('.stats-section');
+
+window.addEventListener('scroll', function() {
+  var rect = statsSection.getBoundingClientRect();
+  if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+    statsSection.style.display = "block";
+    animateNumbers();
+  }
+});
+
+//function that animate the numbers
+function animateNumbers() {
+  var foodReferences = document.querySelector('#food-references-number');
+  var packagingReferences = document.querySelector('#packaging-references-number');
+  var cleaningReferences = document.querySelector('#cleaning-references-number');
+  var customers = document.querySelector('#customers-number');
+  var dailyDeliveries = document.querySelector('#daily-deliveries-number');
+  
+  //set the value to the number you want to display
+  foodReferences.innerHTML = 100;
+  packagingReferences.innerHTML = 200;
+  cleaningReferences.innerHTML = 150;
+  customers.innerHTML = 500;
+  dailyDeliveries.innerHTML = 25;
+}  
+  
+</script>
