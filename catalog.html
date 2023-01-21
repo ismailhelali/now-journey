@@ -1,7 +1,7 @@
 <!DATATYPE html>
 <html>
   <head>
-  <title>Helali's Catalog !</title>
+  <title>Gamme Solidernet</title>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
@@ -284,59 +284,30 @@
   </body>
 </html>
   <script>
-// food card with the some height on load
-  
-window.addEventListener("load", function() { 
 
+window.addEventListener("load", function() {
+  setSameHeight();
+});
+
+window.addEventListener("resize", function() {
+  setSameHeight();
+});
+
+window.addEventListener("orientationchange", function() {
+  setSameHeight();
+});
+
+function setSameHeight() {
   var foodCards = document.querySelectorAll('.food-card');
-var maxHeight = 0;
+  var maxHeight = 0;
+  foodCards.forEach(function(card) {
+    if (card.clientHeight > maxHeight) {
+      maxHeight = card.clientHeight;
+    }
+  });
+  foodCards.forEach(function(card) {
+    card.style.height = maxHeight + 'px';
+  });
+}
 
-foodCards.forEach(function(card) {
-  if (card.clientHeight > maxHeight) {
-    maxHeight = card.clientHeight;
-  }
-});
-
-foodCards.forEach(function(card) {
-  card.style.height = maxHeight + 'px';
-});
-
-});  
-
-// food card with the some height on resize
-  
-window.addEventListener("resize", function() { 
-
-  var foodCards = document.querySelectorAll('.food-card');
-var maxHeight = 0;
-
-foodCards.forEach(function(card) {
-  if (card.clientHeight > maxHeight) {
-    maxHeight = card.clientHeight;
-  }
-});
-
-foodCards.forEach(function(card) {
-  card.style.height = maxHeight + 'px';
-});
-
-});  
-// food card with the some height on orientationchange 
-  
-window.addEventListener("orientationchange", function() { 
-
-  var foodCards = document.querySelectorAll('.food-card');
-var maxHeight = 0;
-
-foodCards.forEach(function(card) {
-  if (card.clientHeight > maxHeight) {
-    maxHeight = card.clientHeight;
-  }
-});
-
-foodCards.forEach(function(card) {
-  card.style.height = maxHeight + 'px';
-});
-
-});  
-    </script>
+</script>
