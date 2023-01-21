@@ -57,33 +57,37 @@
 </div>
  </body>
 </html>
-  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-//when the user scroll down to this section, the stats will be displayed and animated
-var statsSection = document.querySelector('.stats-section');
+  $(document).ready(function() {
+    var statsSection = $('.stats-section');
+    $(window).on('scroll', function() {
+      if(statsSection.isInViewport()) {
+        statsSection.show();
+        animateNumbers();
+      }
+    });
+  });
+  function animateNumbers() {
+    var foodReferences = $('#food-references-number');
+    var packagingReferences = $('#packaging-references-number');
+    var cleaningReferences = $('#cleaning-references-number');
+    var customers = $('#customers-number');
+    var dailyDeliveries = $('#daily-deliveries-number');
 
-window.addEventListener('scroll', function() {
-  var rect = statsSection.getBoundingClientRect();
-  if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-    statsSection.style.display = "block";
-    animateNumbers();
+    //set the value to the number you want to display
+    foodReferences.text(100);
+    packagingReferences.text(200);
+    cleaningReferences.text(150);
+    customers.text(500);
+    dailyDeliveries.text(25);
   }
-});
-
-//function that animate the numbers
-function animateNumbers() {
-  var foodReferences = document.querySelector('#food-references-number');
-  var packagingReferences = document.querySelector('#packaging-references-number');
-  var cleaningReferences = document.querySelector('#cleaning-references-number');
-  var customers = document.querySelector('#customers-number');
-  var dailyDeliveries = document.querySelector('#daily-deliveries-number');
-  
-  //set the value to the number you want to display
-  foodReferences.innerHTML = 100;
-  packagingReferences.innerHTML = 200;
-  cleaningReferences.innerHTML = 150;
-  customers.innerHTML = 500;
-  dailyDeliveries.innerHTML = 25;
-}  
-  
+  //function to check if the element is in the viewport
+  $.fn.isInViewport = function() {
+    var elementTop = $(this).offset().top;
+    var elementBottom = elementTop + $(this).outerHeight();
+    var viewportTop = $(window).scrollTop();
+    var viewportBottom = viewportTop + $(window).height();
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+  };
 </script>
