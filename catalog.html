@@ -268,3 +268,18 @@
 
   </body>
 </html>
+  <script>
+  var foodCards = document.querySelectorAll('.food-card');
+var maxHeight = 0;
+
+foodCards.forEach(function(card) {
+  if (card.clientHeight > maxHeight) {
+    maxHeight = card.clientHeight;
+  }
+});
+
+foodCards.forEach(function(card) {
+  card.style.height = maxHeight + 'px';
+});
+
+    </script>
