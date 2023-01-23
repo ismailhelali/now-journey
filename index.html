@@ -166,7 +166,7 @@
 }
 
 
-/* CSS for styling the search input and dropdown list */
+     /* CSS for styling the search input and dropdown list */
       #search {
         padding: 10px;
         font-size: 16px;
@@ -180,16 +180,26 @@
         overflow-y: scroll;
         border: solid 1px #ddd;
         display: none;
+        background-color: white;
+        z-index: 1;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
       }
       #results li {
         padding: 10px;
         background-color: #f9f9f9;
         border-bottom: solid 1px #ddd;
       }
+      #results li a {
+        text-decoration: none;
+        color: black;
+        display: block;
+      }
       #results li:hover {
         background-color: #f1f1f1;
       }
-     
+
   </style>
   
   </head>
@@ -332,9 +342,8 @@ Appelez-nous dès maintenant et découvrez comment nous pouvons vous aider à am
               let product = products[i];
               let productName = product.name;
               let productCategory = product.category;
-              let productUrl = `/product/${productName}/${productCategory}`;
               let result = document.createElement("li");
-              result.innerHTML = `<a href='${productUrl}'>${productName} - ${productCategory}</a>`;
+              result.innerHTML = `<a href='#' data-category='${productCategory}'>${productName} - ${productCategory}</a>`;
               resultsList.appendChild(result);
               resultsList.style.display = "block";
             }
@@ -343,6 +352,14 @@ Appelez-nous dès maintenant et découvrez comment nous pouvons vous aider à am
           resultsList.style.display = "none";
         }
       });
-    </script>
-  
 
+      // Add click event to each product link
+resultsList.addEventListener("click", function(event) {
+if (event.target.tagName === "A") {
+event.preventDefault();
+let selectedProductCategory = event.target.dataset.category;
+let matchingProducts = products.filter(product => product.category === selectedProductCategory);
+console.log(matchingProducts);
+}
+});
+</script>
