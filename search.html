@@ -9,18 +9,47 @@
   
 
 
-  input[type=search] {
-    border:solid 3px #fff;
-    box-sizing:border-box;
-    font-size:2em;
-    height:30px;
-    width:100%;
-    z-index:1;
-    &:focus {
-      border:solid 3px #09f;      
-      outline:solid #fc0 2000px;
-    }
-  }
+  input[type="search"] {
+  background-color: #ffffff;
+  width: 100%;
+  padding: 12px 20px 12px 40px;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+input[type="search"]:focus {
+  background-color: #ffeb3b;
+  outline: none;
+}
+
+input[type="search"]::placeholder {
+  color: #aaaaaa;
+}
+
+.search-container {
+  display: flex;
+  position: relative;
+}
+
+.search-container i {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #aaaaaa;
+}
+
+.search-container input[type="search"] {
+  width: 80%;
+}
+
+body *:not(input[type="search"]) {
+  display: none;
+}
 
 
     #search-results {
@@ -40,6 +69,7 @@
     #search-results a:hover {
       background-color: lightgray;
     }
+
 /* CSS for styling the modal and product list */
 #modal {
     display: none; /* Hidden by default */
@@ -118,10 +148,16 @@
   </style>
 </head>
 <body>
-
+<div class="search-container">
+  <form>
   <input type="search" id="search-input" placeholder="trouvez un produit ...">
   <div id="search-results"></div>
   <div id="response-box"></div>
+  </form>
+</div>
+
+
+  
 
 <div id="modal" class="modal">
   <div class="modal-content">
