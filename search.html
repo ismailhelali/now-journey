@@ -69,17 +69,19 @@
       results.style.display = "block";
     });
 
-     results.addEventListener("click", function(e) {
+         results.addEventListener("click", function(e) {
         if (e.target.tagName === "A") {
             let selectedProduct = products.find(p=>p.name === e.target.textContent);
             let productsByCategory = products.filter(p => p.category === selectedProduct.category);
             let html = "";
             productsByCategory.forEach(function(product) {
                 html += "<div>" + product.name + "</div>";
+                console.log(product.name);
             });
             responseBox.innerHTML = html;
         }
     });
+
   </script>
 </body>
 </html>
