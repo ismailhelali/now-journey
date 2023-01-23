@@ -166,7 +166,29 @@
 }
 
 
-
+/* CSS for styling the search input and dropdown list */
+      #search {
+        padding: 10px;
+        font-size: 16px;
+        border: solid 1px #ddd;
+        width: 300px;
+      }
+      #results {
+        position: absolute;
+        width: 300px;
+        max-height: 200px;
+        overflow-y: scroll;
+        border: solid 1px #ddd;
+        display: none;
+      }
+      #results li {
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-bottom: solid 1px #ddd;
+      }
+      #results li:hover {
+        background-color: #f1f1f1;
+      }
      
   </style>
   
@@ -190,6 +212,8 @@
   </div>
 </div>
     
+<input type="text" id="search" placeholder="Search for products...">
+    <ul id="results"></ul>
 
 
     <br>
@@ -278,4 +302,47 @@ Appelez-nous dès maintenant et découvrez comment nous pouvons vous aider à am
 </html>
 
 
+    
+    <script>
+      // JavaScript for retrieving and displaying products from products.js
+      let products = [
+        { name: "Product 1", category: "Category A" },
+        { name: "Product 2", category: "Category B" },
+        { name: "Product 3", category: "Category A" },
+        { name: "Product 4", category: "Category C" },
+        { name: "Product 5", category: "Category B" }
+      ];
+
+      // Get the search input and results list
+      let searchInput = document.getElementById("search");
+      let resultsList = document.getElementById("results");
+
+      // Listen for keyup event on search input
+      searchInput.addEventListener("keyup", function(event) {
+        let searchTerm = event.target.value;
+
+        // Clear existing results
+        resultsList.innerHTML = "";
+
+        // Check if search term is not empty
+        if (searchTerm !== "") {
+          // Loop through products and add matching products to results list
+          for (let i = 0; i < products.length; i++) {
+            if (products[i].name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
+              let product = products[i];
+              let productName = product.name;
+              let productCategory = product.category;
+              let productUrl = `/product/${productName}/${productCategory}`;
+              let result = document.createElement("li");
+              result.innerHTML = `<a href='${productUrl}'>${productName} - ${productCategory}</a>`;
+              resultsList.appendChild(result);
+              resultsList.style.display = "block";
+            }
+          }
+        } else {
+          resultsList.style.display = "none";
+        }
+      });
+    </script>
+  
 
