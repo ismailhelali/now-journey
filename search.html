@@ -193,7 +193,7 @@ input[type="search"]::placeholder {
             let productsByCategory = products.filter(p => p.category === selectedProduct.category);
             let html = "";
             productsByCategory.forEach(function(product) {
-                html += "<div>" + product.name + "</div>";
+                html += "<li>" + product.name + "</li>";
             });
             // Get the modal
             var modal = document.getElementById("modal");
