@@ -28,12 +28,52 @@
     #search-results a:hover {
       background-color: lightgray;
     }
+    /* Add Animation */
+    -webkit-animation-name: animatezoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: animatezoom;
+    animation-duration: 0.6s
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
   </style>
 </head>
 <body>
   <input type="text" id="search-input" placeholder="trouvez un produit ...">
   <div id="search-results"></div>
   <div id="response-box"></div>
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p id="modal-text"></p>
+  </div>
+</div>
+
 
   <script>
 
@@ -69,18 +109,41 @@
       results.style.display = "block";
     });
 
-         results.addEventListener("click", function(e) {
+             results.addEventListener("click", function(e) {
         if (e.target.tagName === "A") {
             let selectedProduct = products.find(p=>p.name === e.target.textContent);
             let productsByCategory = products.filter(p => p.category === selectedProduct.category);
             let html = "";
             productsByCategory.forEach(function(product) {
                 html += "<div>" + product.name + "</div>";
-                console.log(product.name);
             });
-            responseBox.innerHTML = html;
+            // Get the modal
+            var modal = document.getElementById("modal");
+
+            // Get the modal text
+            var modalText = document.getElementById("modal-text");
+            modalText.innerHTML = html;
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            // Show the modal
+            modal.style.display = "block";
         }
     });
+
 
   </script>
 </body>
