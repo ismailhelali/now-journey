@@ -1,4 +1,5 @@
-const products = [
+
+var products = [
   {
     name: 'Amgalita 10 kg Patissiàre prix du jour ',
     category: 'Farine - semoule - blé',
@@ -3179,3 +3180,6 @@ const products = [
   },
 ];
 
+function getProducts(){
+    return products;
+}
