@@ -61,7 +61,7 @@
       // Populate the dropdown list with the matching products
       var html = "";
       matches.forEach(function(product) {
-        html += "<a href='#' data-category='"+product.category+"'>" + product.name + "</a>";
+        html += "<a href='#'>" + product.name + "</a>";
       });
       results.innerHTML = html;
       results.style.display = "block";
@@ -69,17 +69,10 @@
 
     results.addEventListener("click", function(e) {
         if (e.target.tagName === "A") {
-            let category = e.target.getAttribute("data-category")
-            let productsByCategory = getProducts().filter(p=>p.category === category)
+            let product = products.find(p=>p.name === e.target.textContent)
             let html = "";
-            productsByCategory.forEach(function(product) {
-                html += "<div>" + product.name + "</div>";
-            });
+            html += "<div>" + product.name + "</div>";
             responseBox.innerHTML = html;
-            let link = document.createElement("a")
-            link.innerText = "See More"
-            link.href = "#"
-            responseBox.appendChild(link)
         }
     });
   </script>
