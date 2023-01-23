@@ -35,6 +35,7 @@
   <div id="response-box"></div>
 
   <script>
+
     // JavaScript for handling the search input and dropdown list
     var input = document.getElementById("search-input");
     var results = document.getElementById("search-results");
@@ -67,11 +68,14 @@
       results.style.display = "block";
     });
 
-    results.addEventListener("click", function(e) {
+     results.addEventListener("click", function(e) {
         if (e.target.tagName === "A") {
-            let product = products.find(p=>p.name === e.target.textContent)
+            let selectedProduct = products.find(p=>p.name === e.target.textContent);
+            let productsByCategory = products.filter(p => p.category === selectedProduct.category);
             let html = "";
-            html += "<div>" + product.name + "</div>";
+            productsByCategory.forEach(function(product) {
+                html += "<div>" + product.name + "</div>";
+            });
             responseBox.innerHTML = html;
         }
     });
