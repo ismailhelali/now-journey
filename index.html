@@ -157,7 +157,7 @@ margin ; auto;
 .title {
   font-size: 26px;
   margin-bottom: 10px;
-  color: #F2C284;
+  color: #FF6347;
 }
 
 .value {
@@ -320,61 +320,10 @@ Appelez-nous dès maintenant et découvrez comment nous pouvons vous aider à am
   </p>
 </form>
 
-<input type="text" id="search" placeholder="Search for products...">
-<ul id="results"></ul>
 
   </body>
 </html>
 
 
     
-    <script>
-      // JavaScript for retrieving and displaying products from products.js
-      let products = [
-        { name: "Product 1", category: "Category A" },
-        { name: "Product 2", category: "Category B" },
-        { name: "Product 3", category: "Category A" },
-        { name: "Product 4", category: "Category C" },
-        { name: "Product 5", category: "Category B" }
-      ];
-
-      // Get the search input and results list
-      let searchInput = document.getElementById("search");
-      let resultsList = document.getElementById("results");
-
-      // Listen for keyup event on search input
-      searchInput.addEventListener("keyup", function(event) {
-        let searchTerm = event.target.value;
-
-        // Clear existing results
-        resultsList.innerHTML = "";
-
-        // Check if search term is not empty
-        if (searchTerm !== "") {
-          // Loop through products and add matching products to results list
-          for (let i = 0; i < products.length; i++) {
-            if (products[i].name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
-              let product = products[i];
-              let productName = product.name;
-              let productCategory = product.category;
-              let result = document.createElement("li");
-              result.innerHTML = `<a href='#' data-category='${productCategory}'>${productName} - ${productCategory}</a>`;
-              resultsList.appendChild(result);
-              resultsList.style.display = "block";
-            }
-          }
-        } else {
-          resultsList.style.display = "none";
-        }
-      });
-
-      // Add click event to each product link
-resultsList.addEventListener("click", function(event) {
-if (event.target.tagName === "A") {
-event.preventDefault();
-let selectedProductCategory = event.target.dataset.category;
-let matchingProducts = products.filter(product => product.category === selectedProductCategory);
-console.log(matchingProducts);
-}
-});
-</script>
+    
