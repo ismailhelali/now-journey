@@ -133,6 +133,27 @@ input[type="search"]::placeholder {
     cursor: pointer;
 }
 
+.btn-group .button {
+  background-color: #4CAF50; /* Green */
+  border: 1px solid green;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  float: left;
+}
+
+.btn-group .button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+.btn-group .button:hover {
+  background-color: #3e8e41;
+}
+
 @-webkit-keyframes animatezoom {
     from {-webkit-transform: scale(0)}
     to {-webkit-transform: scale(1)}
@@ -159,7 +180,17 @@ input[type="search"]::placeholder {
     <span class="close">&times;</span>
     <h2>Le top de sa catégorie</h2>
     <ul id="modal-text"></ul>
-   <button id="modal-button">Gamme Solidernet</button>
+
+   <h2>Découvrez SOLIDERNET</h2>
+
+<p>Nous sommes fiers de t'accueillir, Bienvenue chez vous</p>
+
+<div class="btn-group">
+  <button class="button">Liste intégrale des PRODUITS</button>
+  <button class="button">GAMME Produits SOLIDERNET</button>
+  <button class="button">Nous contacter</button>
+  <button class="button">Trouver SOLIDERNET</button>
+</div>
   </div>
 </div>
 
