@@ -1,151 +1,92 @@
-<!DATATYPE html>
+<!DOCTYPE html>
 <html>
-  <head>
-  <title>Solidernet Temara</title>
-    <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-#watch {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background-color: white;
-  position: relative;
-  margin: 0 auto;
+<body>
+
+<canvas id="canvas" width="400" height="400"
+style="background-color:#333">
+</canvas>
+
+<script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var radius = canvas.height / 2;
+ctx.translate(radius, radius);
+radius = radius * 0.90
+setInterval(drawClock, 1000);
+
+function drawClock() {
+  drawFace(ctx, radius);
+  drawNumbers(ctx, radius);
+  drawTime(ctx, radius);
 }
 
-#watch-face {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  position: relative;
+function drawFace(ctx, radius) {
+  var grad;
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, 2*Math.PI);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+  grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+  grad.addColorStop(0, '#333');
+  grad.addColorStop(0.5, 'white');
+  grad.addColorStop(1, '#333');
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = radius*0.1;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+  ctx.fillStyle = '#333';
+  ctx.fill();
 }
 
-.number {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  font-size: 20px;
-  color: black;
+function drawNumbers(ctx, radius) {
+  var ang;
+  var num;
+  ctx.font = radius*0.15 + "px arial";
+  ctx.textBaseline="middle";
+  ctx.textAlign="center";
+  for(num = 1; num < 13; num++){
+    ang = num * Math.PI / 6;
+    ctx.rotate(ang);
+    ctx.translate(0, -radius*0.85);
+    ctx.rotate(-ang);
+    ctx.fillText(num.toString(), 0, 0);
+    ctx.rotate(ang);
+    ctx.translate(0, radius*0.85);
+    ctx.rotate(-ang);
+  }
 }
 
-#number-12 {
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
+function drawTime(ctx, radius){
+    var now = new Date();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    //hour
+    hour=hour%12;
+    hour=(hour*Math.PI/6)+
+    (minute*Math.PI/(6*60))+
+    (second*Math.PI/(360*60));
+    drawHand(ctx, hour, radius*0.5, radius*0.07);
+    //minute
+    minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+    drawHand(ctx, minute, radius*0.8, radius*0.07);
+    // second
+    second=(second*Math.PI/30);
+    drawHand(ctx, second, radius*0.9, radius*0.02);
 }
 
-#number-1 {
-  top: 50%;
-  left: 100%;
-  transform: translate(-100%, -50%);
+function drawHand(ctx, pos, length, width) {
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.moveTo(0,0);
+    ctx.rotate(pos);
+    ctx.lineTo(0, -length);
+    ctx.stroke();
+    ctx.rotate(-pos);
 }
+</script>
 
-#number-2 {
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, -100%);
-}
-
-#number-3 {
-  top: 50%;
-  left: 0;
-  transform: translate(0%, -50%);
-}
-
-#number-4 {
-  top: 50%;
-  left: -100%;
-  transform: translate(100%, -50%);
-}
-
-#number-5 {
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, 0%);
-}
-
-#number-6 {
-  top: -100%;
-  left: 50%;
-  transform: translate(-50%, 100%);
-}
-
-#number-7 {
-  top: 50%;
-  left: 0;
-  transform: translate(0%, 50%);
-}
-
-#number-8 {
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, 0%);
-}
-
-#number-9 {
-  top: 50%;
-  left: -100%;
-  transform: translate(100%, 50%);
-}
-
-#number-10 {
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, 0%);
-}
-
-#number-11 {
-  top: 50%;
-  left: 100%;
-  transform: translate(-100%, 50%);
-}
-
-#watch-hands {
-  width: 2px;
-  height: 120px;
-  background-color: black;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -60%);
-  transform-origin: bottom center;
-}
-
-    </style>
-  </head>
-  <body>
-    <div id="watch">
-      <div id="watch-face">
-        <div class="number" id="number-12">D</div>
-        <div class="number" id="number-1">E</div>
-        <div class="number" id="number-2">R</div>
-        <div class="number" id="number-3">N</div>
-        <div class="number" id="number-4">E</div>
-        <div class="number" id="number-5">T</div>
-        <div class="number" id="number-6">S</div>
-        <div class="number" id="number-7">O</div>
-        <div class="number" id="number-8">L</div>
-        <div class="number" id="number-9">I</div>
-        <div class="number" id="number-10">11</div>
-        <div class="number" id="number-11">12</div>
-        <div id="watch-hands"></div>
-      </div>
-    </div>
-    <script>
-      function updateWatch() {
-        let date = new Date();
-        let hours = date.getHours();
-        let minutes = date.getMinutes();
-        let seconds = date.getSeconds();
-        let hourDegrees = (hours / 12) * 360 + (minutes / 60) * 30;
-        let minuteDegrees = (minutes / 60) * 360 + (seconds / 60) * 6;
-        let secondDegrees = (seconds / 60) * 360;
-        let hands = document.getElementById("watch-hands");
-        hands.style.transform = "rotate(" + hourDegrees + "deg)";
-      }
-      setInterval(updateWatch, 1000);
-    </script>
-  </body>
+</body>
 </html>
