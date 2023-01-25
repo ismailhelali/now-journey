@@ -3,17 +3,10 @@ background-color  : #DEB887 ;
 width :100%; 
 
 }
-   #canvas-container {
-        width: 100%;
-        height: 100%;
-        max-width: 400px;
-        max-height: 400px;
-    }
-    #canvas {
-        margin : auto;
-        width: 100%;
-        height: 100%;
-    }
+      #canvas {
+  display: block;
+  margin: 0 auto;
+}
 h3, h4 {
     font-family: 'Freestyle Script', cursive;
     text-align: center;
