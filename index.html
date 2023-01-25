@@ -301,26 +301,29 @@ Appelez-nous dès maintenant et découvrez comment nous pouvons vous aider à am
     </div>    
 <br>
 
-<form name="contact" method="POST" data-netlify="true">
-  <p>
-    <label>Your Name: <input type="text" name="name" /></label>
-  </p>
-  <p>
-    <label>Your Email: <input type="email" name="email" /></label>
-  </p>
-  <p>
-    <label>Your Role: <select name="role[]" multiple>
-      <option value="leader">Leader</option>
-      <option value="follower">Follower</option>
-    </select></label>
-  </p>
-  <p>
-    <label>Message: <textarea name="message"></textarea></label>
-  </p>
-  <p>
-    <button type="submit">Send</button>
-  </p>
-</form>
+  <input type="search" id="search-input" placeholder="Que Cherchez-vous ?">
+  <div id="search-results"></div>
+  <div id="response-box"></div>
+  
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Le top de sa catégorie</h2>
+    <ul id="modal-text"></ul>
+
+   <h2>Découvrez SOLIDERNET</h2>
+
+<p>Nous sommes fiers de t'accueillir, Bienvenue chez vous</p>
+
+  <button class="modal-button">Liste intégrale des produits</button>
+  <button class="modal-button">GAMME Produits SOLIDERNET</button>
+  <button class="modal-button">Nous contacter</button>
+  <button class="modal-button">Trouver SOLIDERNET</button>
+
+  </div>
+</div>
+
 
 
   </body>
