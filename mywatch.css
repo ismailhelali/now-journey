@@ -6,6 +6,8 @@ width :100%;
       #canvas {
   display: block;
   margin: 0 auto;
+  width : 34%:
+  height :auto;
 }
 h3, h4 {
     font-family: 'Freestyle Script', cursive;
