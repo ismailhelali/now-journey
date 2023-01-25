@@ -3,10 +3,10 @@ background-color  : #DEB887 ;
 width :100%; 
 
 }
-      #canvas {
+  #canvas {
   display: block;
   margin: 0 auto;
-  width : 34%:
+  width : 34%;
   height :auto;
 }
 h3, h4 {
