@@ -39,9 +39,11 @@ input[type="search"]::placeholder {
       z-index: 1;
     }
     #search-results a {
+      display:table-cell;
+      vertical-align:middle;
       width: 100%;
       height: 30px;    
-      padding: 14px 0px;
+      padding: 10px 0px;
       text-align: left;
       text-decoration: none;
       color: black;
