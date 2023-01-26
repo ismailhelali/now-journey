@@ -40,6 +40,7 @@ input[type="search"]::placeholder {
     }
     #search-results a {
       width: 100%;
+      padding: 0 ;
       text-align: left;
       text-decoration: none;
       color: black;
