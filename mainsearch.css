@@ -14,6 +14,20 @@ input[type="search"] {
   width: 18%;
 }
 
+@media screen and (max-width:600px) {
+ input[type="search"] {
+
+  width: 90%;
+}
+}
+@media screen and (max-width:600px) {
+input[type="search"]:focus {
+  background-color: #DCDCDC;
+  outline: none;
+  width: 100%;
+}
+}
+
 input[type="search"]:focus {
   background-color: #DCDCDC;
   outline: none;
