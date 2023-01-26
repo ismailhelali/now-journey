@@ -13,6 +13,12 @@
   padding: 14px 16px;
   text-decoration: none;
 }
+@media screen and (max-width:600px) {
+  .navbar a {
+    width: 100%;
+  }
+}
+
 
 /* The dropdown container */
 .dropdown {
