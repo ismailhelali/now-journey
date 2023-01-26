@@ -1,7 +1,11 @@
 input[type="search"] {
+  margin-top: 4px;
+  margin-bottom: 4px;
   margin : auto;
   font-size: 18px;
-  height : 46px;
+  height : 38px;
+  border: 1px solid black;
+  border-radius: 10px;
 	
 }
 
@@ -18,7 +22,7 @@ input[type="search"]:focus {
 }
 
 input[type="search"]::placeholder {
-  color: #aaaaaa;
+  color: black;
 }
 
 
