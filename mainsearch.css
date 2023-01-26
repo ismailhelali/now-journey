@@ -1,7 +1,6 @@
 input[type="search"] {
-  margin-top: 2.5px;
-  margin-bottom: 2.5px;
-  margin : auto;
+  margin-top: auto;
+  margin-bottom: 2px;
   font-size: 18px;
   height : 38px;
   border: 1px solid black;
