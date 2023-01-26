@@ -268,7 +268,7 @@ Appelez-nous dès maintenant et découvrez comment nous pouvons vous aider à am
 <h4>au bon moment</h4>
 <h4>avec un bon prix</h4>
 
-    <canvas id="canvas" width="700" height="700"></canvas>
+    <canvas id="canvas"></canvas>
 
 <h3>Time is money</h3>
 <h3>Le Temps c'est de l'argent</h3>
@@ -426,6 +426,21 @@ ctx.lineTo(0, -length);
 ctx.stroke();
 ctx.rotate(-pos);
 }
+  // Get the canvas element
+var canvas = document.getElementById("canvas");
+
+// Set the canvas dimensions to be 50% of the size of the browser window
+function resizeCanvas() {
+    canvas.width = window.innerWidth * 0.5;
+    canvas.height = window.innerHeight * 0.5;
+}
+
+// Call the resize function when the window is resized
+window.addEventListener("resize", resizeCanvas);
+
+// Call the resize function initially
+resizeCanvas();
+
   </script>
 
   </body>
