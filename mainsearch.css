@@ -1,20 +1,20 @@
 input[type="search"] {
   margin : auto;
   font-size: 16px;
-  height : auto;
+  height : 32px;
 	
 }
 
 
   input[type="search"] {
 
-  width: 20%;
+  width: 15%;
 }
 
 input[type="search"]:focus {
   background-color: #ffeb3b;
   outline: none;
-  width: 100%;
+  width: 20%;
 }
 
 input[type="search"]::placeholder {
