@@ -24,6 +24,11 @@ input[type="search"]::placeholder {
   color: black;
 }
 
+#response-box {
+  
+      width: 300px;
+  
+    }
 
     #search-results {
       display: none;
