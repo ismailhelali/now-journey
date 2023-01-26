@@ -36,7 +36,6 @@ input[type="search"]::placeholder {
     #search-results a {
       width: 100%;
       text-align: left;
-      padding: 0.5em;
       text-decoration: none;
       color: black;
     }
