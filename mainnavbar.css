@@ -38,8 +38,12 @@
 
 @media screen and (max-width:600px) {
  .dropdown-content a {
+    display:table-cell;
+    vertical-align:middle;
     width: 100%;
-    float: left;
+    height: 30px;    
+    padding: 8px 0px;
+    text-align: left;
   }
 }
 
