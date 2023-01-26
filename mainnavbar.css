@@ -31,7 +31,13 @@
 }
 
 @media screen and (max-width:600px) {
-  .dropdown .dropbtn .dropdown-content a {
+ .dropdown-content  {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:600px) {
+ .dropdown-content a {
     width: 100%;
   }
 }
