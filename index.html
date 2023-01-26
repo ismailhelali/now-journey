@@ -276,17 +276,14 @@ Appelez-nous dès maintenant et découvrez comment nous pouvons vous aider à am
 <br>
 </div>
 <footer>
-  <div class="footer-container">
-    <nav>
-      <a href="/">Home</a>
-      <a href="contactsolidernet">Contact</a>
+<div class="topnav">
+  <a href="index">Home</a>
+  <a href="contactsolidernet">Contact</a>
       <a href="listeproduits">Liste des produits</a><br>
       <a href="https://www.instagram.com/solidernet/?hl=fr"><i class="fab fa-instagram"></i></a>
       <a href="#"><i class="fab fa-whatsapp"></i></a><br>
-      <a>Copyright &copy; 2023 SOLIDERNET SARL</a>
-
-    </nav>
-  </div>
+  <a>Copyright &copy; 2023 SOLIDERNET SARL</a>
+</div>
 </footer>
 <script>
 
@@ -446,41 +443,41 @@ ctx.rotate(-pos);
 </html>
 
 <style>
-footer {
-  background-color: #333;
-  color: #fff;
+
+/* Style the header */
+.header {
+  background-color: #f1f1f1;
+  padding: 20px;
   text-align: center;
-  padding: 20px 0;
 }
 
-.footer-container {
-  max-width: 100%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
 }
 
-footer nav {
-  display: flex;
-}
-	
-
-
-footer a {
-  color: #fff;
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
-  margin-left: 20px;
 }
 
-footer a:hover {
-  color: #ccc;
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
 }
 
-footer .fa-instagram,
-footer .fa-whatsapp {
-  font-size: 18px;
-  margin-left: 10px;
+
+@media screen and (max-width:600px) {
+  .topnav a {
+    width: 100%;
+  }
 }
 
 </style>
