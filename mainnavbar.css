@@ -18,11 +18,7 @@
     width: 100%;
   }
 }
-@media screen and (max-width:600px) {
-  .dropdown .dropbtn {
-   width: 100%;
-}
-}
+
 
 /* The dropdown container */
 .dropdown {
