@@ -1,14 +1,14 @@
 input[type="search"] {
   margin : auto;
   font-size: 16px;
-  height : 20 px;
+  height : auto;
 	
 }
 
 
   input[type="search"] {
 
-  width: 80%;
+  width: 20%;
 }
 
 input[type="search"]:focus {
