@@ -18,6 +18,12 @@
     width: 100%;
   }
 }
+
+@media screen and (max-width:600px) {
+  .dropdown {
+    width: 100%;
+  }
+}
 @media screen and (max-width:600px) {
   .dropdown .dropbtn {
     width: 100%;
