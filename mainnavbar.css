@@ -30,6 +30,12 @@
   }
 }
 
+@media screen and (max-width:600px) {
+  .dropdown .dropbtn .dropdown-content a {
+    width: 100%;
+  }
+}
+
 /* The dropdown container */
 .dropdown {
   float: left;
