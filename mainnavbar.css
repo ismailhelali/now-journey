@@ -19,7 +19,7 @@
   }
 }
 @media screen and (max-width:600px) {
-  .dropdown {
+  .dropbtn {
    width: 100%;
 
 }
