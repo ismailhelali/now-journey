@@ -15,18 +15,11 @@ input[type="search"] {
 }
 
 @media screen and (max-width:600px) {
- input[type="search"] {
-
-  width: 90%;
-}
-}
-@media screen and (max-width:600px) {
-input[type="search"]:focus {
-  background-color: #DCDCDC;
-  outline: none;
+#search-input {
   width: 100%;
 }
 }
+
 
 input[type="search"]:focus {
   background-color: #DCDCDC;
