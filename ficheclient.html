@@ -13,6 +13,20 @@
 <script>
 function submitForm() {
   var form = document.getElementById("myForm");
+
+  // check if name and email fields are filled in
+  if(form.name.value == "" || form.email.value == "") {
+    alert("Name and Email fields are required!");
+    return;
+  }
+
+  // check if email address is valid
+  var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  if(!emailRegex.test(form.email.value)) {
+    alert("Invalid email address!");
+    return;
+  }
+
   var data = new FormData(form);
   
   fetch("https://script.google.com/macros/s/AKfycbyiZyniCKHAX-TKtadVBZiuUqUhfYnGitHPz6wDjna__xGgBZBNQeNYHxnkaZckTmSYJA/exec", {
@@ -27,5 +41,6 @@ function submitForm() {
     alert(text);
   });
 }
+
 </script>
 
