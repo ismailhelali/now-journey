@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="mainnavbar.css">
 <link rel="stylesheet" type="text/css" href="mainsearch.css">
 <link rel="stylesheet" type="text/css" href="mywatch.css">
+<link rel="stylesheet" type="text/css" href="contacteznous.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 
 <script src="products.js"></script>
@@ -251,6 +252,61 @@ Appelez-nous dès maintenant et découvrez comment nous pouvons vous aider à am
     </div>    
 <br>
 
+<h1>Contactez Nous</h1>
+<h2>Pour toute demande, n'hésitez pas à nous contacter. Notre service clientèle prendra contact avec vous dans les plus brefs délais.</h2>
+
+<form id="myForm">
+  <label for="name">Nom et Prénom *</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="email">Email *</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="telephone">Téléphone *</label>
+  <input type="telephone" id="telephone" name="telephone" required>
+  
+  <label for="objet">Objet *</label>
+  <select id="objet" name="objet" required>
+    <option value="Demand d'information">Demande d'information</option>
+    <option value="Demande de prix">Demande de prix</option>
+    <option value="Réclamation">Réclamation</option>
+    <option value="Autre">Autre à préciser</option>
+  </select>
+
+  <label for="message">Message *</label>
+  <textarea id="message" name="message" required></textarea>
+
+  <input type="checkbox" id="accept" name="accept" required>
+  <label for="accept">J'accepte que SOLIDERNET SARL utilise mes coordonnées pour me contacter</label>
+  
+  <input type="checkbox" id="human" name="human" required>
+  <label for="human">Je suis un humain</label>
+  
+  <button type="submit" onclick="submitForm()">Envoyer</button>
+</form>
+
+<script>
+// JavaScript function to submit the form
+function submitForm() {
+  var form = document.getElementById("myForm");
+  var data = new FormData(form);
+
+  fetch("https://script.google.com/macros/s/AKfycbw2lvcgcRYCDyOu31SnB6g1bNCIiGZd3pMKERfI0Xc1jfGRRP5AF1O0DRmhTaYfkSvZ/exec", {
+    method: "POST",
+    body: data
+  })
+  .then(function(response) {
+    return response.text();
+  })
+  .then(function(text) {
+    console.log(text);
+    alert(text);
+  });
+}
+</script>
+
+
+<br>
 <div class="mywatch">
 <br>
 <h3>Notre Devise</h3>
