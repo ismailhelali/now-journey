@@ -1,5 +1,63 @@
 <!DOCTYPE html>
 <html>
+<head>
+  #myForm {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+/* Form labels */
+#myForm label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Form inputs */
+#myForm input, #myForm select, #myForm textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Form checkboxes and labels */
+#myForm input[type="checkbox"] {
+  margin-right: 10px;
+}
+#myForm label[for="accept"], #myForm label[for="human"] {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+/* Form submit button */
+#myForm button[type="submit"] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#myForm button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Form required fields */
+#myForm input[required], #myForm select[required], #myForm textarea[required] {
+  border-color: #f44336;
+}
+  
+  </head>  
+  
 <body>
 
 <form id="myForm">
@@ -7,11 +65,16 @@
   Email: <input type="email" name="email"><br>
   Numéro de Téléphon :<input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
   Message: <textarea name="message"></textarea><br>
-  <input type="button" value="Submit" onclick="submitForm()">
+  <input type="button" value="Submit" onclick="submitForm() ; clearForm()">
 </form>
 </body>
 </html>
 <script>
+function clearForm() {
+    document.getElementById("myForm").reset();
+}  
+  
+  
 function submitForm() {
   var form = document.getElementById("myForm");
 
