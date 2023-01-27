@@ -5,6 +5,7 @@
 <form id="myForm">
   Name: <input type="text" name="name"><br>
   Email: <input type="email" name="email"><br>
+  Numéro de Téléphon :<input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
   Message: <textarea name="message"></textarea><br>
   <input type="button" value="Submit" onclick="submitForm()">
 </form>
@@ -29,7 +30,7 @@ function submitForm() {
 
   var data = new FormData(form);
   
-  fetch("https://script.google.com/macros/s/AKfycbx7MTESvtRoUiTP5dPBPRCZ0OHwJ9Hg5lItCbF8CLfrQxYI2amKZuopDFAZk_7Ay-x8_w/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbxAhLgVsOxtxJ-PkGgFvWoCk4rPkjUHhGRk59006yIVhcxhJGoEBQSqiWLyJfoCC6nbWg/exec", {
     method: "POST",
     body: data
   })
