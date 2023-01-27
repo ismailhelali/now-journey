@@ -37,14 +37,22 @@
   border-radius: 4px;
    height : 150px;
 }
-/* Form checkboxes and labels */
-#myForm input[type="checkbox"] {
-  margin-right: 10px;
+input[type="checkbox"] {
+  display: none; /* hide the checkbox */
 }
-#myForm label[for="accept"], #myForm label[for="human"] {
-  font-size: 14px;
-  font-weight: normal;
+
+input[type="checkbox"] + label {
+  color: #333; /* text color */
+  font-size: 16px; /* text size */
 }
+
+/* style the checkbox when it's checked */
+input[type="checkbox"]:checked + label:before {
+  content: "✔"; /* checkmark */
+  color: green; /* checkmark color */
+}
+
+
 
 /* Form submit button */
 #myForm .button {
@@ -81,6 +89,8 @@
   <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
   <label for="message">Votre message:</label>
   <textarea name="message"></textarea><br>
+  <input type="checkbox" name="terms" id="terms" required>
+  <label for="terms">J'accepte les termes et conditions.</label><br>
   <input class="button" type="button" value="Submit" onclick="submitForm() ; clearForm()">
 </form>
 </body>
@@ -109,7 +119,7 @@ function submitForm() {
 
   var data = new FormData(form);
   
-  fetch("https://script.google.com/macros/s/AKfycbxAhLgVsOxtxJ-PkGgFvWoCk4rPkjUHhGRk59006yIVhcxhJGoEBQSqiWLyJfoCC6nbWg/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbw-cy1SZfFrJjLh8NJ2q8HVY3IXCUPsjxa9HaiDECPgBiKNY_5LLDyClhnur1PrT4b1LA/exec", {
     method: "POST",
     body: data
   })
