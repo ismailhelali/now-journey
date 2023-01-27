@@ -62,10 +62,13 @@
 <body>
 
 <form id="myForm">
-  Name: <input type="text" name="name"><br>
-  Email: <input type="email" name="email"><br>
+  <label for="name">Nom et prénom:</label>
+  <input type="text" name="name"><br>
+  <label for="email">Email:</label>
+  <input type="email" name="email"><br>
   Numéro de Téléphon :<input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
-  Message: <textarea name="message"></textarea><br>
+  <label for="message">Votre message:</label>
+  <textarea name="message"></textarea><br>
   <input type="button" value="Submit" onclick="submitForm() ; clearForm()">
 </form>
 </body>
