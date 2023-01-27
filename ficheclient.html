@@ -38,7 +38,7 @@
 }
 
 /* Form submit button */
-#myForm button[type="button"] {
+#myForm .button {
   width: 100%;
   background-color: #00008B;
   color: white;
@@ -70,7 +70,7 @@
   <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
   <label for="message">Votre message:</label>
   <textarea name="message"></textarea><br>
-  <input type="button" value="Submit" onclick="submitForm() ; clearForm()">
+  <input class="button" type="button" value="Submit" onclick="submitForm() ; clearForm()">
 </form>
 </body>
 </html>
