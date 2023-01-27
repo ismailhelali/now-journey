@@ -1,80 +1,55 @@
 /* Form container */
-.form-container {
-  width: 50%;
+#myForm {
+  width: 600px;
   margin: 0 auto;
   padding: 20px;
+  background-color: #f7f7f7;
   border: 1px solid #ccc;
   border-radius: 10px;
 }
 
-/* Form heading */
-.form-heading {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* Form elements */
-.form-element {
-  margin-bottom: 20px;
-}
-
 /* Form labels */
-.form-label {
-  display: block;
-  font-size: 14px;
+#myForm label {
+  font-size: 18px;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  display: block;
 }
 
-/* Form input fields */
-.form-input {
+/* Form inputs */
+#myForm input, #myForm select, #myForm textarea {
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
+  padding: 12px;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-/* Form select field */
-.form-select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+/* Form checkboxes and labels */
+#myForm input[type="checkbox"] {
+  margin-right: 10px;
+}
+#myForm label[for="accept"], #myForm label[for="human"] {
+  font-size: 14px;
+  font-weight: normal;
 }
 
-/* Form textarea */
-.form-textarea {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: none;
-}
-
-/* Form checkbox */
-.form-checkbox {
-  margin: 8px 0;
-}
-
-/* Form button */
-.form-button {
+/* Form submit button */
+#myForm button[type="submit"] {
   width: 100%;
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
-  margin: 8px 0;
+  margin-top: 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
-
-/* Form button on hover */
-.form-button:hover {
+#myForm button[type="submit"]:hover {
   background-color: #45a049;
+}
+
+/* Form required fields */
+#myForm input[required], #myForm select[required], #myForm textarea[required] {
+  border-color: #f44336;
 }
