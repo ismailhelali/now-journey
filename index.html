@@ -276,43 +276,42 @@ Appelez-nous dès maintenant et découvrez comment nous pouvons vous aider à am
 <script>
 function submitForm() {
   // Get form data
-  var name = document.getElementById("name").value;
-  var email = document.getElementById("email").value;
-  var message = document.getElementById("message").value;
-  var iAmHuman = document.getElementById("iAmHuman").checked;
-  var acceptTerms = document.getElementById("acceptTerms").checked;
+  var name
+function clearForm() {
+    document.getElementById("myForm").reset();
+}  
   
-  // Validate form data
-  if (!iAmHuman) {
-    alert("Please confirm that you are a human.");
-    return;
-  }
-  if (!acceptTerms) {
-    alert("Please accept the terms of use.");
-    return;
-  }
-  if (!name) {
-    alert("Please enter your name.");
-    return;
-  }
-  if (!email) {
-    alert("Please enter your email.");
-    return;
-  }
-  if (!message) {
-    alert("Please enter a message.");
-    return;
-  }
   
-  var scriptUrl = google.script.url.getUrl('AKfycbx5PVKXacBDp8GwnfpP2CiDDr3vCyy859O5HluW4Baip4ch6BM0gRP3YAiJ2G5f2EBAVw');
+function submitForm() {
+  var form = document.getElementById("myForm");
 
-  // Send form data to Google Script for handling
-  fetch(scriptUrl, {
-    method: 'POST',
-    body: new FormData(document.forms['contactForm'])
+  // check if name and email fields are filled in
+  if(form.name.value == "" || form.email.value == "") {
+    alert("Name and Email fields are required!");
+    return;
+  }
+
+  // check if email address is valid
+  var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  if(!emailRegex.test(form.email.value)) {
+    alert("Invalid email address!");
+    return;
+  }
+
+  var data = new FormData(form);
+  
+  fetch("https://script.google.com/macros/s/AKfycbwXtblh0zVtPM_f5dW4KNDHLnpgaT6eX31Gd6Z35Uqu8PwLhoVazqzI3-uGroxEVbx1Pg/exec", {
+    method: "POST",
+    body: data
+  })
+  .then(function(response) {
+    return response.text();
+  })
+  .then(function(text) {
+    console.log(text);
+    alert(text);
   });
 }
-
 
     </script>
 
