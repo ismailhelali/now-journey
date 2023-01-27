@@ -270,7 +270,7 @@ Appelez-nous dès maintenant et découvrez comment nous pouvons vous aider à am
     <option value="Demand d'information">Demande d'information</option>
     <option value="Demande de prix">Demande de prix</option>
     <option value="Réclamation">Réclamation</option>
-    <option value="Autre">Autre à préciser</option>
+    <option value="Autre">Autres</option>
   </select>
 
   <label for="message">Message *</label>
@@ -284,27 +284,71 @@ Appelez-nous dès maintenant et découvrez comment nous pouvons vous aider à am
   
   <button type="submit" onclick="submitForm()">Envoyer</button>
 </form>
-
 <script>
 // JavaScript function to submit the form
 function submitForm() {
   var form = document.getElementById("myForm");
-  var data = new FormData(form);
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  var telephone = document.getElementById("telephone").value;
+  var objet = document.getElementById("objet").value;
+  var message = document.getElementById("message").value;
+  var accept = document.getElementById("accept").checked;
+  var human = document.getElementById("human").checked;
+  var error = document.getElementById("error");
 
-  fetch("https://script.google.com/macros/s/AKfycbw2lvcgcRYCDyOu31SnB6g1bNCIiGZd3pMKERfI0Xc1jfGRRP5AF1O0DRmhTaYfkSvZ/exec", {
-    method: "POST",
-    body: data
-  })
-  .then(function(response) {
-    return response.text();
-  })
-  .then(function(text) {
-    console.log(text);
-    alert(text);
-  });
+  var valid = true;
+  error.innerHTML = "";
+
+  if (!name) {
+    error.innerHTML += "Name is required<br>";
+    valid = false;
+  }
+  if (!email) {
+    error.innerHTML += "Email is required<br>";
+    valid = false;
+  } else if (!email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+    error.innerHTML += "Invalid email address<br>";
+    valid = false;
+  }
+  if (!telephone) {
+    error.innerHTML += "Telephone is required<br>";
+    valid = false;
+  }
+  if (!objet) {
+    error.innerHTML += "Objet is required<br>";
+    valid = false;
+  }
+  if (!message) {
+    error.innerHTML += "Message is required<br>";
+    valid = false;
+  }
+  if (!accept) {
+    error.innerHTML += "Accept is required<br>";
+    valid = false;
+  }
+  if (!human) {
+    error.innerHTML += "Human is required<br>";
+    valid = false;
+  }
+
+  if (valid) {
+    var data = new FormData(form);
+    fetch("https://script.google.com/macros/s/AKfycbw2lvcgcRYCDyOu31SnB6g1bNCIiGZd3pMKERfI0Xc1jfGRRP5AF1O0DRmhTaYfkSvZ/exec", {
+      method: "POST",
+      body: data
+    })
+    .then(function(response) {
+      return response.text();
+    })
+    .then(function(text) {
+      console.log(text);
+      alert(text);
+    });
+  }
 }
-</script>
 
+    </script>
 
 <br>
 <div class="mywatch">
