@@ -53,11 +53,13 @@
   margin-bottom: 10px;
   display: block;
 }
-    #myForm .terms {
+   
+   .termsofuse {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
+
   </style>
   </head>  
   
@@ -71,8 +73,12 @@
   <input type="tel" placeholder="Numéro de téléphone" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
   <label for="message">Votre Message</label><br>
   <textarea name="message"></textarea><br>
+  <div class="termsofuse">
+
    <input type="checkbox" class="terms" name="terms" id="terms" value="j'accepte que solidernet sarl utilise mes coordonnées pour me contacter" required><label class="terms" for="terms">J'accepte les termes et conditions.</label><br>
-  <input class="button" type="button" value="Envoyer" onclick="submitForm() ; clearForm()">
+</div>
+
+   <input class="button" type="button" value="Envoyer" onclick="submitForm() ; clearForm()">
         </form>
     </div>
   
