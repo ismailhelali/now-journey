@@ -473,6 +473,25 @@ width: 100%;
     <h1>SOLIDERNET a plus de 35 catégories et 3 000 produits pour répondre aux besoins de ses clients avec le meilleur rapport qualité-prix garanti.</h1>
     
     <a class="myButton"  href="https://solidernet.ma/listeproduits">Découvrez la liste intégrale de nos produits</a>
+<br>
+<h1>Vous avezd'autres questions</h1>
+  <h2>N'hésitez pas à nous contacter. Pour passer une commande ou demander simplement plus d'informations.</h2>
+    <div class="contactform">
+        <form id="myForm">
+  <input type="text" placeholder="Nom et prénom" name="name"><br>
+  <input type="email" placeholder="Votre Email" name="email"><br>
+  <input type="tel" placeholder="Numéro de téléphone" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+  <label for="message">Votre Message</label><br>
+  <textarea name="message"></textarea><br>
+  <div class="termsofuse">
+
+   <input type="checkbox" class="terms" name="terms" id="terms" value="j'accepte que solidernet sarl utilise mes coordonnées pour me contacter" required><label class="labelterms" for="terms">j'accepte que solidernet sarl utilise mes coordonnées pour me contacter.</label><br>
+</div>
+
+   <input class="button" type="button" value="Envoyer" onclick="submitForm() ; clearForm()">
+        </form>
+    </div>
+  
 
   </body>
 </html>
@@ -503,4 +522,41 @@ function setSameHeight() {
   });
 }
 
-</script>
+
+function clearForm() {
+    document.getElementById("myForm").reset();
+}  
+  
+  
+function submitForm() {
+  var form = document.getElementById("myForm");
+
+  // check if name and email fields are filled in
+  if(form.name.value == "" || form.email.value == "" || form.phone.value == "" || form.message.value == "" || form.terms.value == "") {
+    alert("Merci de remplirle formulaire pour nous aider à satisfaire votre besoin!");
+    return;
+  }
+
+  // check if email address is valid
+  var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  if(!emailRegex.test(form.email.value)) {
+    alert("Invalid email address!");
+    return;
+  }
+
+  var data = new FormData(form);
+  
+  fetch("https://script.google.com/macros/s/AKfycbwXtblh0zVtPM_f5dW4KNDHLnpgaT6eX31Gd6Z35Uqu8PwLhoVazqzI3-uGroxEVbx1Pg/exec", {
+    method: "POST",
+    body: data
+  })
+  .then(function(response) {
+    return response.text();
+  })
+  .then(function(text) {
+    console.log(text);
+    alert(text);
+  });
+}
+
+    </script>
